@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app' >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="css/reset.css">
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+
+    
+</head>
+<body ng-controller='ctr1'>
+<header class="header">
+    <span class="sp1"><i class="fa fa-angle-left"></i></span>
+    <p class="sp2">订单支付</p>
+    <span class="sp3"><i class="fa fa-commenting-o"></i></span>
+</header>
+<section class="section">
+    <div class="one">
+        <p class="p1">路飞 <span>185****2424</span></p>
+        <p class="p2"><span class="p2-sp1"><i class="fa fa-map-marker"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;北京市海淀区知春路北京市海淀区知春路北京市&nbsp;&nbsp;&nbsp;&nbsp;<span class="p2-sp2"><i class="fa fa-angle-right"></i></span></p>
+    </div>
+    <div class="two">
+        <img src="images/a2.png" alt="div">
+
+    </div>
+    <div class="three"></div>
+    <div class="four">
+        <p class="pp"><i class="fa fa-bank"></i>&nbsp;恒之然旗舰店</p>
+        <dl>
+            <dt><img src="images/a1.png" alt=""></dt>
+            <dd>
+                <p class="p1">维维嚼益嚼水果大豆棒橙味维维嚼 益嚼水果大豆棒橙味...</p>
+                <p class="p2"><span class="sp1">￥988.00</span><br><span class="sp2">¥1000.00</span></p>
+
+                <p class="p3">
+                    <span class="sp1" ng-click='prev()'>-</span><span class="sp2" >{{num}}</span><span class="sp3" ng-click='next()'>+</span>
+                </p>
+
+            </dd>
+        </dl>
+    </div>
+    <div class="ding">
+    <p class="four-p2">
+        <span class="four-p2-sp1">商品总金额 :</span>
+        <span class="four-p2-sp2">{{price}}</span>
+    </p>
+    </div>
+    <div class="ding">
+    <p class="four-p3">
+        <span class="four-p2-sp1">运费 :</span>
+        <span class="four-p2-sp2">{{yun}}</span>
+    </p>
+    </div>
+    <div class="ding">
+        <p class="four-p4">
+            <span class="four-p2-sp1">总额 :</span>
+            <span class="four-p2-sp3">{{sum}}</span>
+        </p>
+    </div>
+    <div class="three1"></div>
+    <div class="five">
+        <div class="five-one">余额支付 ¥100.00</div>
+        <div class="wrap">
+            <label for="id" >
+                <input type="checkbox" id="id" ng-model="flag1" ng-change="dian1()">
+
+                <div class="big">
+                    <div class="small">
+
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="six">
+        <div class="five-one">奖金支付 ¥100.00</div>
+          <div class="wrap1">
+            <label for="txt" >
+                <input type="checkbox" id="txt" ng-model="flag2" ng-change="dian2()">
+
+                <div class="big" >
+                    <div class="small">
+
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="seven">
+        <span class="sp1">其他支付方式</span>
+        <span class="sp2"><i class="fa fa-angle-right"></i></span>
+    </div>
+    <div class="eight">
+        <div class="eight-one">总计: <span>{{sum1}}</span><br>（含运费） </div>
+        <div class="eight-two">提交订单</div>
+    </div>
+    <div class="nine">余额不足，请选择其他的支付方式！</div>
+</section>
+<script src="js/angular.js"></script>
+<script>
+     var app=angular.module('app',[]);
+     app.controller('ctr1',function($scope){
+        $scope.yun=10;
+        $scope.num=1;
+        $scope.price=988;
+        $scope.flag1=false;
+        $scope.flag2=true;
+        $scope.one=100;
+        $scope.two=200;
+
+        $scope.sum=(($scope.price*$scope.num)+$scope.yun).toFixed(2);
+        $scope.sum1=$scope.sum;
+        $scope.prev=function(){
+            
+            if($scope.num>0){
+                $scope.num--;
+            }
+            $scope.sum=(($scope.price*$scope.num)+$scope.yun).toFixed(2);
+            $scope.sum1=$scope.sum;
+
+        }
+        $scope.next=function(){
+            
+            if($scope.num<10){
+                $scope.num++;
+            }
+            $scope.sum=(($scope.price*$scope.num)+$scope.yun).toFixed(2);
+            $scope.sum1=$scope.sum;
+
+        }
+
+
+//         $scope.dian1 = function(){
+//             if($scope.flag1&&$scope.flag2){
+//                 $scope.sum1= $scope.one + $scope.two;
+//             }else if($scope.flag1){
+//                 $scope.sum1 = $scope.ye;
+//             }else if($scope.flag2){
+//                 $scope.sum1 = $scope.ye2;
+//             }else{
+//                 $scope.sum1= 0;
+//             }
+//
+//
+//         }
+
+
+
+     })
+</script>
+
+</body>
+</html>
